@@ -29,15 +29,15 @@ const ExpensesTable = () => {
     const base_url = "https://expenses-backend-mu.vercel.app/expenses";
 
     // Fetch data using async/await with the Fetch API
-    const fetchUsingAsyncAwaitWithFetchApi = async () => {
+    const fetchExpenses = async () => {
       try {
         const response = await fetch(base_url, {
           headers: {
             "Content-Type": "application/json",
-            Username: "firstname.lastname", // <--- Make sure you change this }
+            Username: "fulden.beytur",
           },
           signal,
-        }); // Fetch data based on the current page
+        });
         const data = await response.json();
         setExpenses(data);
         setError(null);
@@ -52,8 +52,8 @@ const ExpensesTable = () => {
       }
     };
 
-    // Trigger all fetching methods on component mount
-    fetchUsingAsyncAwaitWithFetchApi();
+    // Trigger fetching method on component mount
+    fetchExpenses();
 
     // Cleanup: Abort the controller and set loading to true when the component unmounts
     return () => {
